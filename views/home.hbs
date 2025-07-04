@@ -1,39 +1,50 @@
-<h1>Voor mijn liefje ♥</h1>
-<p>We zien elkaar terug over <strong>{{dagen}}</strong> dagen en <strong>{{uren}}</strong> uur!</p>
 
-{{#each briefjes}}
-  <div class="briefje">
-    <h2>{{this.title}}</h2>
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h1 class="display-5">Voor mijn liefje ♥</h1>
+      <p class="lead">We zien elkaar terug over <strong>{{dagen}}</strong> dagen en <strong>{{uren}}</strong> uur!</p>
+    </div>
 
-    {{#if (gt this.countdown 0)}}
-      <!-- Nog niet open: toon gesloten envelop en timer -->
-      <img src="/images/envelope-closed.png" width="100" alt="Gesloten envelop" />
-      <p class="timer" data-countdown="{{this.countdown}}">Opent over ...</p>
-    {{else}}
-      <!-- Open briefje: toon foto en bericht -->
-      <img src="/uploads/{{this.photo}}" width="300" alt="Foto bij briefje" />
-      <p>{{this.message}}</p>
-    {{/if}}
+    <div class="row gy-4">
+      {{#each briefjes}}
+        <div class="col-12 col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-body text-center">
+              <h2 class="h5 card-title">{{this.title}}</h2>
+
+              {{#if (gt this.countdown 0)}}
+                <!-- Gesloten briefje -->
+                <img src="/images/envelope-closed.png" class="img-fluid my-3" alt="Gesloten envelop" style="max-width: 100px;" />
+                <p class="timer text-muted" data-countdown="{{this.countdown}}">Opent over ...</p>
+              {{else}}
+                <!-- Open briefje -->
+                <img src="/uploads/{{this.photo}}" class="img-fluid rounded my-3" alt="Foto bij briefje" />
+                <p class="card-text">{{this.message}}</p>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
   </div>
-{{/each}}
 
-<script>
-  // Functie om countdowns te updaten
-  document.querySelectorAll('.timer').forEach(el => {
-    let seconds = parseInt(el.dataset.countdown);
+  <!-- Bootstrap JS + Countdown script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.timer').forEach(el => {
+      let seconds = parseInt(el.dataset.countdown);
 
-    const interval = setInterval(() => {
-      if (seconds <= 0) {
-        el.textContent = "Nu open!";
-        clearInterval(interval);
-        // Optioneel: pagina verversen zodat briefje opent
-        // location.reload();
-      } else {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        el.textContent = `Opent over ${h}u ${m}min`;
-        seconds--;
-      }
-    }, 1000);
-  });
-</script>
+      const interval = setInterval(() => {
+        if (seconds <= 0) {
+          el.textContent = "Nu open!";
+          clearInterval(interval);
+          // location.reload();
+        } else {
+          const h = Math.floor(seconds / 3600);
+          const m = Math.floor((seconds % 3600) / 60);
+          el.textContent = `Opent over ${h}u ${m}min`;
+          seconds--;
+        }
+      }, 1000);
+    });
+  </script>
