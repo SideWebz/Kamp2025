@@ -1,0 +1,8 @@
+<h1>Admin: Nieuw briefje</h1>
+<form action="/admin/nieuw" method="POST" enctype="multipart/form-data">
+  <input type="text" name="title" placeholder="Titel" required />
+  <textarea name="message" placeholder="Briefje..." required></textarea>
+  <input type="file" name="photo" required />
+  <input type="datetime-local" name="release_at" required />
+  <button type="submit">Opslaan</button>
+</form>

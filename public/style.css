@@ -1,0 +1,132 @@
+/* Reset en basis */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #fff0f6;
+  color: #333;
+  margin: 0;
+  padding: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+h1 {
+  font-size: 1.8rem;
+  color: #d6336c;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Briefjes container */
+.briefje {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(214, 51, 108, 0.2);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Titel briefje */
+.briefje h2 {
+  font-size: 1.3rem;
+  color: #c11244;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Foto styling */
+.briefje img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 0.8rem auto;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #f5c6d4;
+}
+
+/* Bericht tekst */
+.briefje p {
+  font-size: 1rem;
+  text-align: center;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+/* Timer */
+.timer {
+  font-weight: 600;
+  color: #d6336c;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Button styling (voor admin indien nodig) */
+button {
+  background-color: #d6336c;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out;
+  display: block;
+  margin: 1rem auto 0 auto;
+}
+
+button:hover {
+  background-color: #a82449;
+}
+
+/* Input styling */
+input[type="text"],
+input[type="password"],
+input[type="datetime-local"],
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  body {
+    padding: 0.8rem;
+  }
+
+  .briefje {
+    margin: 0.8rem 0;
+    padding: 0.8rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .briefje h2 {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,39 @@
+<h1>Voor mijn liefje ♥</h1>
+<p>We zien elkaar terug over <strong>{{dagen}}</strong> dagen en <strong>{{uren}}</strong> uur!</p>
+
+{{#each briefjes}}
+  <div class="briefje">
+    <h2>{{this.title}}</h2>
+
+    {{#if (gt this.countdown 0)}}
+      <!-- Nog niet open: toon gesloten envelop en timer -->
+      <img src="/images/envelope-closed.png" width="100" alt="Gesloten envelop" />
+      <p class="timer" data-countdown="{{this.countdown}}">Opent over ...</p>
+    {{else}}
+      <!-- Open briefje: toon foto en bericht -->
+      <img src="/uploads/{{this.photo}}" width="300" alt="Foto bij briefje" />
+      <p>{{this.message}}</p>
+    {{/if}}
+  </div>
+{{/each}}
+
+<script>
+  // Functie om countdowns te updaten
+  document.querySelectorAll('.timer').forEach(el => {
+    let seconds = parseInt(el.dataset.countdown);
+
+    const interval = setInterval(() => {
+      if (seconds <= 0) {
+        el.textContent = "Nu open!";
+        clearInterval(interval);
+        // Optioneel: pagina verversen zodat briefje opent
+        // location.reload();
+      } else {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        el.textContent = `Opent over ${h}u ${m}min`;
+        seconds--;
+      }
+    }, 1000);
+  });
+</script>
